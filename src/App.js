@@ -1,15 +1,15 @@
-import React, { useState, useRef } from 'react';
+//import React, { useState, useRef } from 'react';
 import ReactPlayer from "react-player";
 import classes from './app.module.css';
 
 function App() {
 
-  const [videoFilePath, setVideoFileURL] = useState("./assets/beyondTheSea.mp4");
+  //const [videoFilePath, setVideoFileURL] = useState("./assets/beyondTheSea.mp4");
 
-  const vidRef = useRef(null);
-  const handlePlayVideo = () => {
-    vidRef.current.play();
-  }
+  // const vidRef = useRef(null);
+  // const handlePlayVideo = () => {
+  //   vidRef.current.play();
+  // }
 
   return (
     <div className={classes.container}>
