@@ -1,17 +1,12 @@
-version: '3.7'
-
+version: '3'
 services:
-
-  faust-radio:
-    image: faust-radio
-    #restart: no
-    container_name: faust-radio
+  hologram:
     build: ./
+    container_name: hologram
     ports:
-      - 3011:3011
+      - 3000:3000
+    networks:
+      - dejavu_db_network
 
-      
 networks:
-  default:
-    external:
-      name: my-net
+  dejavu_db_network:

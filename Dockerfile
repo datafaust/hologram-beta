@@ -1,48 +1,20 @@
-FROM python:2
+# pull official base image
+FROM node:13.12.0-alpine
 
-RUN apt-get update \
-    && apt-get install -y \
-        build-essential \
-        git \
-        make \
-        wget \
-        ffmpeg \
-        portaudio19-dev \
-        python-pyaudio
+# set working directory
+WORKDIR /app
 
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
 
-COPY requirements.txt ./
+# install app dependencies
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install --silent
+RUN npm install react-scripts@3.4.1 -g --silent
 
-WORKDIR /
+# add app
+COPY . ./
 
-RUN pip install matplotlib
-RUN pip install termcolor
-RUN pip install scipy
-RUN pip install pydub
-RUN pip install PyAudio
-RUN pip install -r requirements.txt
-
-
-COPY . /
-
-#MAKE WAY
-RUN git clone https://github.com/itspoma/audio-fingerprint-identifying-python.git
-RUN cd /audio-fingerprint-identifying-python && make clean reset
-RUN cd /audio-fingerprint-identifying-python && make tests
-RUN mkdir audio-fingerprint-identifying-python/mp3
-RUN cp BeeGeesStayingAlive.mp3 audio-fingerprint-identifying-python/mp3
-RUN cd /audio-fingerprint-identifying-python && make fingerprint-songs
-
-#OTHER WAY
-# RUN git clone https://github.com/JosephMawanda/audio_recogition_system
-# RUN cd /audio_recogition_system && make clean reset
-# RUN cd /audio_recogition_system && make tests
-# RUN mkdir audio_recogition_system/mp3
-# RUN cp BeeGeesStayingAlive.mp3 audio_recogition_system/mp3
-# RUN python audio_recogition_system/collect-fingerprints-of-songs.py
-
-
-
-ENTRYPOINT [ "python" ]
-
-CMD [ "app.py" ]
+# start app
+CMD ["npm", "start"]
