@@ -5,7 +5,7 @@ import classes from './app.module.css';
 
 //const api = "http://192.168.0.128:3002/get_song/"
 //const api = "handler:3002/get_song/"
-const api = "http://localhost:3004/get_song"
+const api = "http://192.168.0.128/get_song"
 
 function App() {
 
@@ -19,7 +19,7 @@ function App() {
     fetch(api)
       .then((resp) => resp.json())
       .then((apiData) => {
-        //console.log(apiData[0].link)
+        console.log(apiData[0].link)
         setLink(apiData[0].link);
       });
   }
