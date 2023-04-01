@@ -37,7 +37,7 @@ function App() {
 
   return (
     <div className={classes.container}>
-
+      <div>{link ? <div>{link}</div> : <div></div>}</div>
       {/**TOP & BOTTOM VIDEO */}
       <div className={classes.vertical}>
          <div className={classes.top}>
