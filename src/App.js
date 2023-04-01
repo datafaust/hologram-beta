@@ -5,7 +5,7 @@ import classes from './app.module.css';
 
 //const api = "http://192.168.0.128:3002/get_song/"
 //const api = "handler:3002/get_song/"
-const api = "http://192.168.0.128/get_song"
+const api = "http://192.168.0.128:3004/get_song"
 
 function App() {
 
