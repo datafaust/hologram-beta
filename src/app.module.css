@@ -2,19 +2,22 @@
 @media only screen and (max-width: 600px) {
 
 .linktext {
+  position: relative;
   color: white;
 }
 
 .container {
-    position: absolute;
+    /* position: absolute; */
     background-color: black;
-    height: 100%;
-    width: 100%
+    height: 100vh;
+    width: 100vhw;
+    background-position: 0px 0px;
+    background-repeat: repeat;
 }
     
 .vertical {
     position: relative;
-    margin-left:32%;
+    margin-left:15%;
     text-align: center;
     align-items: center;
     display: flex;
@@ -24,8 +27,8 @@
 }
 
 .top {
-    flex: 1;
-    margin-bottom: 50%;
+    /* flex: 1; */
+    margin-bottom: 70%;
 }
 
 .bottom{

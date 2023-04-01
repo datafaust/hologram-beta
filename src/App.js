@@ -4,13 +4,14 @@ import classes from './app.module.css';
 //import YouTube from 'react-youtube';
 
 //const api = "http://192.168.0.128:3002/get_song/"
-//const api = "handler:3002/get_song/"
-const api = "http://192.168.0.128:3004/get_song"
+const api = "handler:3002/get_song/"
+//const api = "http://192.168.0.128:3004/get_song"
 
 function App() {
 
 
   const [link, setLink] = useState([]);
+  const [id, setId] = useState([]);
   //const [color, setColor] = useState('white')
 
 
@@ -24,13 +25,24 @@ function App() {
       });
   }
 
+  const getId = async () => {
+    // API to fetch some dummy data
+    fetch(api)
+      .then((resp) => resp.json())
+      .then((apiData) => {
+        console.log(apiData[0].id)
+        setId(apiData[0].id);
+      });
+  }
+
 
   useEffect(() => {
     try {
       setInterval(async () => {
-        getSong()
+        //getSong()
+        getId();
       }, 5000);
-    } catch(e) {
+    } catch (e) {
       console.log(e);
     }
   }, []); // Dependency-array
@@ -38,53 +50,51 @@ function App() {
 
   return (
     <div className={classes.container}>
-      <div>{link ? <div className={classes.linktext}>{link}</div> : <div></div>}</div>
-       {/**TOP & BOTTOM VIDEO */}
-      <div className={classes.vertical}>
-         <div className={classes.top}>
-         <iframe  
-            src="https://www.youtube-nocookie.com/embed/ycDeZBYy074?autoplay=1&mute=1" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" >
-         </iframe>
-        </div> 
-        <div className={classes.bottom}>
-          <ReactPlayer
-            playing={true}
-            muted={true}
-            url={link}
-            width="50%"
-            height="50%"
-            controls={true}
-          />
-        </div>
+
+
+      <div>{id ? <div className={classes.linktext}>{ id }</div> : <div></div>}</div>
+
+      {/**TOP & BOTTOM VIDEO */}
+
+      <div>
+        <iframe
+          src={"https://www.youtube.com/embed/" + id + "?autoplay=1&mute=1&enablejsapi=1"}
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" >
+        </iframe>
       </div>
+
+      <div>
+        <iframe
+          src={"https://www.youtube.com/embed/" + id + "?autoplay=1&mute=1&enablejsapi=1"}
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" >
+        </iframe>
+      </div>
+
+      <div>
+        <iframe
+          src={"https://www.youtube.com/embed/" + id + "?autoplay=1&mute=1&enablejsapi=1"}
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" >
+        </iframe>
+      </div>
+      <div>
+        <iframe
+          src={"https://www.youtube.com/embed/" + id + "?autoplay=1&mute=1&enablejsapi=1"}
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" >
+        </iframe>
+      </div>
+
 
 
       {/**LEFT AND RIGHT VIDEO */}
-      <div className={classes.horizontal}>
-        <div className={classes.left}>
-          <ReactPlayer
-            playing={true}
-            muted={true}
-            url={link}
-            width="80%"
-            height="50%"
-            controls={true}
-          />
-        </div>
-        <div className={classes.right}>
-          <ReactPlayer
-            playing={true}
-            muted={true}
-            url={link}
-            width="80%"
-            height="50%"
-            controls={true}
-          />
-        </div>
-      </div>
+
 
 
     </div>
@@ -95,3 +105,11 @@ export default App;
 
 
 
+// <ReactPlayer
+//             playing={true}
+//             muted={true}
+//             url={link}
+//             width="80%"
+//             height="50%"
+//             controls={true}
+//           />
