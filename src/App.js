@@ -1,47 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactPlayer from "react-player";
 import classes from './app.module.css';
 //import YouTube from 'react-youtube';
 
-const api = "http://192.168.0.20:5000"
-//const api = "http://dejavu_python_1:5000"
-
+const api = "handler/get_song/"
+//const api = "http://localhost:3002/get_song/"
 
 function App() {
 
 
-  const [link, setLink] = useState(['https://www.youtube.com/watch?v=UwnmzIgNzyU']);
+  const [link, setLink] = useState([]);
   const [color, setColor] = useState('white')
 
-  //FINAL SUBMIT
-  const getSong = async () => {
-    setLink(`https://www.youtube.com/watch?v=_p9YwR2PGtY`)
 
-    let response = await fetch(`${api}/recognize`)
-      .then(res => res.json())
-      .then(res => {
-        console.log(res["videos"][0])
-        return res["videos"][0]["url_suffix"]
-      })
-      .catch((error) => {
-        console.log(error)
+  const getSong = async () => {
+    // API to fetch some dummy data
+    fetch(api)
+      .then((resp) => resp.json())
+      .then((apiData) => {
+        //console.log(apiData[0].link)
+        setLink(apiData[0].link);
       });
-    //console.log(response)
-    
-    setLink(`https://www.youtube.com${response}`)
   }
 
-  //const [videoFilePath, setVideoFileURL] = useState("./assets/beyondTheSea.mp4");
 
-  // const vidRef = useRef(null);
-  // const handlePlayVideo = () => {
-  //   vidRef.current.play();
-  // }
+  useEffect(() => {
+    try {
+      setInterval(async () => {
+        getSong()
+      }, 5000);
+    } catch(e) {
+      console.log(e);
+    }
+  }, []); // Dependency-array
+
 
   return (
     <div className={classes.container}>
-
-      <button  className={classes.reload} onClick={() => getSong()}>READ SONG</button>
 
       {/**TOP & BOTTOM VIDEO */}
       <div className={classes.vertical}>
@@ -53,7 +48,7 @@ function App() {
             width="50%"
             height="50%"
             controls={true}
-          /> 
+          />
         </div> 
         <div className={classes.bottom}>
           <ReactPlayer
