@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactPlayer from "react-player";
 import classes from './app.module.css';
+//import YouTube from 'react-youtube';
 
 const api = "http://192.168.0.20:5000"
 //const api = "http://dejavu_python_1:5000"
@@ -9,7 +10,7 @@ const api = "http://192.168.0.20:5000"
 function App() {
 
 
-  const [link, setLink] = useState(['https://www.youtube.com/watch?v=-5CdAup0o-I']);
+  const [link, setLink] = useState(['https://www.youtube.com/watch?v=UwnmzIgNzyU']);
   const [color, setColor] = useState('white')
 
   //FINAL SUBMIT
@@ -44,7 +45,7 @@ function App() {
 
       {/**TOP & BOTTOM VIDEO */}
       <div className={classes.vertical}>
-        <div className={classes.top}>
+         <div className={classes.top}>
           <ReactPlayer
             playing={true}
             muted={true}
@@ -52,8 +53,8 @@ function App() {
             width="50%"
             height="50%"
             controls={true}
-          />
-        </div>
+          /> 
+        </div> 
         <div className={classes.bottom}>
           <ReactPlayer
             playing={true}
