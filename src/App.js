@@ -39,18 +39,15 @@ function App() {
   return (
     <div className={classes.container}>
       <div>{link ? <div className={classes.linktext}>{link}</div> : <div></div>}</div>
-      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ycDeZBYy074?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      {/**TOP & BOTTOM VIDEO */}
+       {/**TOP & BOTTOM VIDEO */}
       <div className={classes.vertical}>
          <div className={classes.top}>
-          <ReactPlayer
-            playing={true}
-            muted={true}
-            url={link}
-            width="50%"
-            height="50%"
-            controls={true}
-          />
+         <iframe  
+            src="https://www.youtube-nocookie.com/embed/ycDeZBYy074?autoplay=1&mute=1" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" >
+         </iframe>
         </div> 
         <div className={classes.bottom}>
           <ReactPlayer
