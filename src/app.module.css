@@ -1,6 +1,10 @@
 
 @media only screen and (max-width: 600px) {
 
+.linktext {
+  color: white;
+}
+
 .container {
     position: absolute;
     background-color: black;
