@@ -3,9 +3,9 @@ import ReactPlayer from "react-player";
 import classes from './app.module.css';
 //import YouTube from 'react-youtube';
 
-const api = "http://192.168.0.128:3002/get_song/"
+//const api = "http://192.168.0.128:3002/get_song/"
 //const api = "handler:3002/get_song/"
-//const api = "http://localhost:3002/get_song/"
+const api = "http://localhost:3002/get_song/"
 
 function App() {
 
