@@ -4,6 +4,7 @@ import classes from './app.module.css';
 //import YouTube from 'react-youtube';
 
 const api = "http://192.168.0.128:3002"
+const start = "20";
 //const api = "http://handler:3002/get_song/"
 //const api = "http://192.168.0.128:3004/get_song"
 
@@ -13,6 +14,7 @@ function App() {
   //const [link, setLink] = useState([]);
   const [id, setId] = useState([]);
   const [source, setSource] = useState([]);
+  
   //const [color, setColor] = useState('white')
 
 
@@ -56,7 +58,7 @@ function App() {
         //getSong()
         //getId();
         getSource();
-      }, 5000);
+      }, 6000);
     } catch (e) {
       console.log(e);
     }
@@ -67,44 +69,76 @@ function App() {
     <div className={classes.container}>
 
 
-      <div>{id ? <div className={classes.linktext}>{ id }</div> : <div></div>}</div>
+      <div>{id ? <div className={classes.linktext}>{ `Current Stream Link: ${id}` }</div> : <div></div>}</div>
 
       {/**TOP & BOTTOM VIDEO */}
 
-      <div>
+      <div className={classes.top}>
         <iframe
-          src={"https://www.youtube.com/embed/" + id + "?autoplay=1&mute=1&enablejsapi=1"}
+          width = "150"
+          src={"https://www.youtube.com/embed/" + id + "?autoplay=1&mute=1&enablejsapi=1&start=" + start}
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" >
         </iframe>
       </div>
 
-      <div>
+      <div className={classes.bottom}>
         <iframe
-          src={"https://www.youtube.com/embed/" + id + "?autoplay=1&mute=1&enablejsapi=1"}
+          width = "150"
+          src={"https://www.youtube.com/embed/" + id + "?autoplay=1&mute=1&enablejsapi=1&start=" + start}
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" >
         </iframe>
       </div>
 
-      <div>
+      <div className={classes.right}>
         <iframe
-          src={"https://www.youtube.com/embed/" + id + "?autoplay=1&mute=1&enablejsapi=1"}
+          width = "150"
+          src={"https://www.youtube.com/embed/" + id + "?autoplay=1&mute=1&enablejsapi=1&start=" + start}
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" >
         </iframe>
       </div>
-      <div>
+
+      <div className={classes.left}>
         <iframe
-          src={"https://www.youtube.com/embed/" + id + "?autoplay=1&mute=1&enablejsapi=1"}
+          width = "150"
+          src={"https://www.youtube.com/embed/" + id + "?autoplay=1&mute=1&enablejsapi=1&start=" + start}
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" >
         </iframe>
       </div>
+
+
+      {/* <div>
+        <iframe
+          src={"https://www.youtube.com/embed/" + id + "?autoplay=1&mute=1&enablejsapi=1&start=" + start}
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" >
+        </iframe>
+      </div> */}
+
+      {/* <div>
+        <iframe
+          src={"https://www.youtube.com/embed/" + id + "?autoplay=1&mute=1&enablejsapi=1&start=" + start}
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" >
+        </iframe>
+      </div> */}
+      {/* <div>
+        <iframe
+          src={"https://www.youtube.com/embed/" + id + "?autoplay=1&mute=1&enablejsapi=1&start=" + start}
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" >
+        </iframe>
+      </div> */}
 
 
 
