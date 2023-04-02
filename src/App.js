@@ -30,8 +30,8 @@ function App() {
     fetch(api)
       .then((resp) => resp.json())
       .then((apiData) => {
-        console.log(apiData[0].id)
-        setId(apiData[0].id);
+        console.log(apiData[0].song_id)
+        setId(apiData[0].song_id);
       });
   }
 
