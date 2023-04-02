@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import classes from './app.module.css';
 //import YouTube from 'react-youtube';
 
-const api = "http://192.168.0.128:3002/get_song/"
+const api = "http://192.168.0.128:3002"
 //const api = "http://handler:3002/get_song/"
 //const api = "http://192.168.0.128:3004/get_song"
 
@@ -26,8 +26,7 @@ function App() {
   // }
 
   const getId = async () => {
-    // API to fetch some dummy data
-    fetch(api)
+    fetch(`${api}/get_song`)
       .then((resp) => resp.json())
       .then((apiData) => {
         console.log(api)
@@ -36,12 +35,28 @@ function App() {
       });
   }
 
+  const getSource = async () => {
+    fetch(`${api}/get_source`)
+      .then((resp) => resp.json())
+      .then((apiData) => {
+        console.log(api)
+        console.log(apiData[0])
+        setId(apiData[0].source);
+      });
+  }
+
 
   useEffect(() => {
     try {
       setInterval(async () => {
         //getSong()
-        getId();
+        //getId();
+        route = getSource();
+        if(route == 'youtube') {
+          getId();
+        } else {
+          print('render local')
+        }
       }, 5000);
     } catch (e) {
       console.log(e);
