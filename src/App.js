@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import classes from './app.module.css';
 //import YouTube from 'react-youtube';
 
-const api = "http://192.168.0.128:3002"
+const api = "http://dejavu:3002"
 const start = "20";
 //const api = "http://handler:3002/get_song/"
 //const api = "http://192.168.0.128:3004/get_song"
