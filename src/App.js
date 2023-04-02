@@ -36,12 +36,17 @@ function App() {
   }
 
   const getSource = async () => {
-    fetch(`${api}/get_source`)
+    let response = await fetch(`${api}/get_source`)
       .then((resp) => resp.json())
       .then((apiData) => {
-        console.log(apiData[0].source)
+        //console.log(apiData[0].source)
         setSource(apiData[0].source);
+        return apiData[0].source
       });
+
+    if( response === 'youtube') {
+      getId()
+    }
   }
 
 
@@ -51,9 +56,6 @@ function App() {
         //getSong()
         //getId();
         getSource();
-        if(source == 'youtube') {
-          getId();
-        }
       }, 5000);
     } catch (e) {
       console.log(e);
