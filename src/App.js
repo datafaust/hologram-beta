@@ -12,6 +12,7 @@ function App() {
 
   //const [link, setLink] = useState([]);
   const [id, setId] = useState([]);
+  const [source, setSource] = useState([]);
   //const [color, setColor] = useState('white')
 
 
@@ -29,7 +30,6 @@ function App() {
     fetch(`${api}/get_song`)
       .then((resp) => resp.json())
       .then((apiData) => {
-        console.log(api)
         console.log(apiData[0])
         setId(apiData[0].song_id);
       });
@@ -39,9 +39,8 @@ function App() {
     fetch(`${api}/get_source`)
       .then((resp) => resp.json())
       .then((apiData) => {
-        console.log(api)
-        console.log(apiData[0])
-        setId(apiData[0].source);
+        console.log(apiData[0].source)
+        setSource(apiData[0].source);
       });
   }
 
@@ -51,11 +50,9 @@ function App() {
       setInterval(async () => {
         //getSong()
         //getId();
-        route = getSource();
-        if(route == 'youtube') {
+        getSource();
+        if(source == 'youtube') {
           getId();
-        } else {
-          print('render local')
         }
       }, 5000);
     } catch (e) {
