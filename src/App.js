@@ -71,9 +71,7 @@ function App() {
 
   return (
     <div>
-      {
-        song.length && song.source === 'youtube' ? <YoutubePlayer song={song} start={start} /> : <StreamPlayer song={song}/> 
-      }
+      {song && song.source === 'youtube' ? <YoutubePlayer song={song} start={start} /> : <StreamPlayer song={song}/>}
       {/* {song && <YoutubePlayer song={song} start={start} />} */}
       {/* {mock && <StreamPlayer song={mock}/> } */}
     </div>
