@@ -10,7 +10,7 @@ const YoutubePlayer = ({ song, start }) => {
     return (
         <div className={classes.container}>
 
-         <div className={classes.linktext}>{ `Current Stream Link: ${song.song_id}` }</div>
+         <div className={classes.linktext}>{ `Current ${song.source} Link: ${song.song_id}` }</div>
                 <div className={classes.top}>
                     <iframe
                         width="150"

@@ -11,14 +11,15 @@
         /* position: absolute; */
         background-color: black;
         height: 100vh;
-        width: 100vhw;
-        background-position: 0px 0px;
-        background-repeat: repeat;
+        width: 100vw;
+        /* background-position: 0px 0px; */
+        /* background-repeat: repeat; */
     }
     
     .top {
       margin-left: 27%;
-      margin-top: 20%
+      margin-top: 20%;
+      /* position: absolute; */
       /* flex: 1; */
       /* margin-bottom: 70%; */
     }
@@ -45,17 +46,6 @@
       margin-right: 73%;
     }
         
-    .vertical {
-        position: relative;
-        margin-left:15%;
-        text-align: center;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        margin-top: 40%;
-    }
-    
     
     /* 
     .bottom{
